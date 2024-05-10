@@ -1,0 +1,40 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": ["prettier", "react", "react-hooks", "unused-imports"],
+  "rules": {
+    "react/prop-types": "off",
+    "react/function-component-definition": "off",
+    "react/no-invalid-html-attribute": "off",
+    "react/no-arrow-function-lifecycle": "off",
+    "react/no-unused-class-component-methods": "off",
+    "react/display-name": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-no-useless-fragment": "error",
+    "react/require-default-props": "off",
+    "react/no-array-index-key": "warn",
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "off",
+    "no-undef": "error",
+    "no-console": "off",
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state", "registration"] }],
+    "no-fallthrough": ["error", { "commentPattern": "pass" }],
+    "no-plusplus": "off",
+    "no-shadow": "warn",
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off"
+  }
+}
