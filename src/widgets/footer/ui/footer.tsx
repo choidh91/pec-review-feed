@@ -12,7 +12,7 @@ export const Footer = () => {
         <Squares2X2Icon className="w-7 h-7" />
         <span>REVIEW</span>
       </Link>
-      <Link href="" className="flex flex-col items-center gap-px">
+      <Link href="/" className="flex flex-col items-center gap-px">
         <HomeIcon className="w-7 h-7" />
         <span>HOME</span>
       </Link>

@@ -1,5 +1,8 @@
-import { ReviewsPage } from '@/src/pages/reviewsPage';
+import { getReviews } from '@/entities/reviewList';
+import { ReviewsPage } from '@/pages/reviewsPage/';
 
-export default function Reviews() {
-  return <ReviewsPage />;
+export default async function Reviews() {
+  const reviews = await getReviews();
+
+  return <ReviewsPage reviews={reviews} />;
 }

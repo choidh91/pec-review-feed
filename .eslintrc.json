@@ -25,7 +25,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-no-useless-fragment": "error",
     "react/require-default-props": "off",
-    "react/no-array-index-key": "warn",
+    "react/no-array-index-key": "off",
     "react/react-in-jsx-scope": "off",
     "no-unused-vars": "off",
     "no-undef": "error",

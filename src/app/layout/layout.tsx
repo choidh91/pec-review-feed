@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer } from '@/src/widgets/footer';
+import { Footer } from '@/widgets/footer';
 
 export const Layout = ({
   children,

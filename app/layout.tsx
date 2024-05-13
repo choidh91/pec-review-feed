@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import './globals.css';
-import { Layout } from '@/src/app/layout';
+import { Layout } from '@/app/layout';
 
 export const metadata: Metadata = {
   title: 'Ecommerce',
