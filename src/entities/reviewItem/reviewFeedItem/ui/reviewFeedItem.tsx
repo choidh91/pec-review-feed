@@ -1,13 +1,16 @@
 import { IReview } from '@/shared/types';
 import Image from 'next/image';
 import Link from 'next/link';
-import { HeartIcon } from '@heroicons/react/24/outline';
+import { HeartIcon as OutlineHeartIcon } from '@heroicons/react/24/outline';
+import { HeartIcon as SolidHeartIcon } from '@heroicons/react/24/solid';
 
 interface ReviewFeedItemProps {
   review: IReview;
+  like?: boolean;
+  onToggleLike?: (value: boolean) => void;
 }
 
-export const ReviewFeedItem = ({ review }: ReviewFeedItemProps) => {
+export const ReviewFeedItem = ({ review, like, onToggleLike }: ReviewFeedItemProps) => {
   return (
     <div className="p-2">
       <div className="flex-1 border-2 rounded-md p-2">
@@ -20,10 +23,16 @@ export const ReviewFeedItem = ({ review }: ReviewFeedItemProps) => {
           </div>
         </div>
         <p className="text-base text-gray-700 dark:text-gray-300 mt-2">{review.content}</p>
-        {review.photo && <Image src={review.photo} alt="image" width={150} height={150} />}
+
+        {review.photo && (
+          <div className="size-36 flex items-center">
+            <Image src={review.photo} alt="image" width={150} height={150} priority />
+          </div>
+        )}
         <div className="flex flex-row items-center mt-2">
-          <HeartIcon className="w-7 h-7" />
-          <div className="flex items-center h-full ml-2">{review.like}</div>
+          <OutlineHeartIcon className="w-7 h-7" />
+          {/* {like ? <SolidHeartIcon className="w-7 h-7" /> : <OutlineHeartIcon className="w-7 h-7" />} */}
+          {/* <div className="flex items-center h-full ml-2">{review.like}</div> */}
         </div>
       </div>
     </div>

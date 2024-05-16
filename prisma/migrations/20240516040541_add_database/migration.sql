@@ -4,10 +4,21 @@ CREATE TABLE "Review" (
     "userId" INTEGER NOT NULL,
     "content" TEXT NOT NULL,
     "photo" TEXT,
-    "like" INTEGER NOT NULL DEFAULT 0,
     "productId" INTEGER NOT NULL,
     CONSTRAINT "Review_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "Review_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Product" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Like" (
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL,
+    "userId" INTEGER NOT NULL,
+    "reviewId" INTEGER NOT NULL,
+
+    PRIMARY KEY ("userId", "reviewId"),
+    CONSTRAINT "Like_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "Like_reviewId_fkey" FOREIGN KEY ("reviewId") REFERENCES "Review" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable

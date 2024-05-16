@@ -19,15 +19,27 @@ model Review {
   userId    Int
   content   String
   photo     String?
-  like      Int     @default(0)
   product   Product @relation(fields: [productId], references: [id])
   productId Int
+  likes     Like[]
+}
+
+model Like {
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post     Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  userId   Int
+  reviewId Int
+
+  @@id(name: "id", [userId, reviewId])
 }
 
 model Product {
   id         Int      @id @default(autoincrement())
   name       String
-  view_count Int @default(0)
+  view_count Int      @default(0)
   review     Review[]
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int
@@ -53,4 +65,5 @@ model User {
   recent_view_category2    Category? @relation("CategoryToUser2", fields: [recent_view_category2_id], references: [id])
   recent_view_category3    Category? @relation("CategoryToUser3", fields: [recent_view_category3_id], references: [id])
   Review                   Review[]
+  likes                    Like[]
 }
