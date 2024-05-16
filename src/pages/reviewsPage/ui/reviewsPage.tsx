@@ -13,11 +13,13 @@ export const ReviewsPage = ({ reviews }: ReviewsPageProps) => {
   const reviewMode = useReviewModeStore((state) => state.reviewMode);
 
   return (
-    <div className="w-full h-full bg-white">
-      <div className="flex flex-col">
+    <div className="w-full h-full bg-white pb-20">
+      <div className="flex flex-col h-full">
         <ToggleReviewMode mode={reviewMode} />
-        {reviewMode === 'album' && reviews.map((review) => <ReviewAlbumItem key={review.id} review={review} />)}
-        {reviewMode === 'feed' && reviews.map((review) => <ReviewFeedItem key={review.id} review={review} />)}
+        <div className="flex-1 overflow-auto">
+          {reviewMode === 'album' && reviews.map((review) => <ReviewAlbumItem key={review.id} review={review} />)}
+          {reviewMode === 'feed' && reviews.map((review) => <ReviewFeedItem key={review.id} review={review} />)}
+        </div>
       </div>
     </div>
   );

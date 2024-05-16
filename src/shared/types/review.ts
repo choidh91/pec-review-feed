@@ -1,6 +1,7 @@
-import { Review, Product, User } from '@prisma/client';
+import { Review } from '@prisma/client';
+import { IProduct, IUser } from '@/shared/types';
 
 export type IReview = Review & {
-  author: User;
-  product: Product;
+  author: IUser;
+  product: IProduct;
 };
