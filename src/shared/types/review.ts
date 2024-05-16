@@ -1,3 +1,6 @@
-import { Review } from '@prisma/client';
+import { Review, Product, User } from '@prisma/client';
 
-export type IReview = Review;
+export type IReview = Review & {
+  author: User;
+  product: Product;
+};

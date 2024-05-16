@@ -14,9 +14,11 @@ export const ReviewsPage = ({ reviews }: ReviewsPageProps) => {
 
   return (
     <div className="w-full h-full bg-white">
-      <ToggleReviewMode mode={reviewMode} />
-      {reviewMode === 'album' && reviews.map((review) => <ReviewAlbumItem key={review.id} review={review} />)}
-      {reviewMode === 'feed' && reviews.map((review) => <ReviewFeedItem key={review.id} review={review} />)}
+      <div className="flex flex-col">
+        <ToggleReviewMode mode={reviewMode} />
+        {reviewMode === 'album' && reviews.map((review) => <ReviewAlbumItem key={review.id} review={review} />)}
+        {reviewMode === 'feed' && reviews.map((review) => <ReviewFeedItem key={review.id} review={review} />)}
+      </div>
     </div>
   );
 };

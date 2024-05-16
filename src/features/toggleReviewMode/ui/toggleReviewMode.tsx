@@ -15,7 +15,7 @@ export const ToggleReviewMode = ({ mode }: ToggleReviewModeProps) => {
   };
 
   return (
-    <div className="flex flex-row gap-2 float-end p-6">
+    <div className="flex flex-row gap-2 p-6 ml-auto">
       <div className="flex items-center">
         <input
           checked={mode === 'album'}
