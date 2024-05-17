@@ -1,4 +1,4 @@
-import { IReview } from '@/shared/types';
+import { IReview } from '@/shared/api/review';
 import Image from 'next/image';
 import Link from 'next/link';
 import { HeartIcon as OutlineHeartIcon } from '@heroicons/react/24/outline';

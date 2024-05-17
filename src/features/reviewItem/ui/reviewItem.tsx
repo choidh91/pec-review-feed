@@ -1,5 +1,5 @@
 import { ReviewModeItem } from '@/features/reviewItem';
-import { IReview } from '@/shared/types';
+import { IReview } from '@/shared/api/review';
 import { getLikeStatus } from '@/shared/api/review';
 import { unstable_cache as nextCache } from 'next/cache';
 

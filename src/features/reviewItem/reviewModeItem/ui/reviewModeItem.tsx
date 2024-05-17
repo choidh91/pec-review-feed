@@ -2,7 +2,7 @@
 
 import { useReviewModeStore } from '@/features/toggleReviewMode';
 import { ReviewAlbumItem, ReviewFeedItem } from '@/entities/reviewItem';
-import { IReview } from '@/shared/types';
+import { IReview } from '@/shared/api/review';
 import { likeReview, dislikeReview } from '@/features/likeReview';
 
 interface ReviewModeItemProps {
