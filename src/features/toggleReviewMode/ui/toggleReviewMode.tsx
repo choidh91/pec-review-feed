@@ -3,11 +3,9 @@
 import { useReviewModeStore } from '@/features/toggleReviewMode';
 import { ReviewMode } from '../types';
 
-interface ToggleReviewModeProps {
-  mode: ReviewMode;
-}
+export const ToggleReviewMode = () => {
+  const reviewMode = useReviewModeStore((state) => state.reviewMode);
 
-export const ToggleReviewMode = ({ mode }: ToggleReviewModeProps) => {
   const setReviewMode = useReviewModeStore((state) => state.setReviewMode);
 
   const handleChangeReviewMode = (reviewMode: ReviewMode) => {
@@ -18,7 +16,7 @@ export const ToggleReviewMode = ({ mode }: ToggleReviewModeProps) => {
     <div className="flex flex-row gap-2 p-6 ml-auto">
       <div className="flex items-center">
         <input
-          checked={mode === 'album'}
+          checked={reviewMode === 'album'}
           id="album"
           type="radio"
           value="album"
@@ -32,7 +30,7 @@ export const ToggleReviewMode = ({ mode }: ToggleReviewModeProps) => {
       </div>
       <div className="flex items-center">
         <input
-          checked={mode === 'feed'}
+          checked={reviewMode === 'feed'}
           id="feed"
           type="radio"
           value="feed"

@@ -1,26 +1,20 @@
-'use client';
+import { ToggleReviewMode } from '@/features/toggleReviewMode';
+import { ReviewItem } from '@/features/reviewItem';
+import { getReviews } from '@/entities/reviewList';
 
-import { ToggleReviewMode, useReviewModeStore } from '@/features/toggleReviewMode';
-import { ReviewAlbumItem, ReviewFeedItem } from '@/entities/reviewItem';
-
-import { IReview } from '@/shared/types';
-
-interface ReviewsPageProps {
-  reviews: IReview[];
-}
-
-export const ReviewsPage = ({ reviews }: ReviewsPageProps) => {
-  const reviewMode = useReviewModeStore((state) => state.reviewMode);
+export async function ReviewsPage() {
+  const reviews = await getReviews();
 
   return (
     <div className="w-full h-full bg-white pb-20">
       <div className="flex flex-col h-full">
-        <ToggleReviewMode mode={reviewMode} />
+        <ToggleReviewMode />
         <div className="flex-1 overflow-auto">
-          {reviewMode === 'album' && reviews.map((review) => <ReviewAlbumItem key={review.id} review={review} />)}
-          {reviewMode === 'feed' && reviews.map((review) => <ReviewFeedItem key={review.id} review={review} />)}
+          {reviews.map((review) => (
+            <ReviewItem key={review.id} review={review} />
+          ))}
         </div>
       </div>
     </div>
   );
-};
+}

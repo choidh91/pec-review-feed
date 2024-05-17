@@ -1,12 +1,23 @@
 import { db } from '@/shared/api';
 
-export const checkLikedReview = async (reviewId: number) => {
-  const like = await db.like.findFirst({
+export const getLikeStatus = async (reviewId: number) => {
+  const likeCount = await db.like.count({
     where: {
-      userId: 1,
       reviewId,
     },
   });
 
-  return !!like;
+  const liked = await db.like.findUnique({
+    where: {
+      id: {
+        userId: 1,
+        reviewId,
+      },
+    },
+  });
+
+  return {
+    likeCount,
+    liked: Boolean(liked),
+  };
 };

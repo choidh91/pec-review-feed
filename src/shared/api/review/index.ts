@@ -1,1 +1,1 @@
-export { checkLikedReview } from './review';
+export { getLikeStatus } from './review';
