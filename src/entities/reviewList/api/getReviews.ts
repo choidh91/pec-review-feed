@@ -1,5 +1,5 @@
 import { db } from '@/shared/api';
-import { IReview } from '@/shared/types';
+import { IReview } from '@/shared/api/review';
 
 // 현재 로그인한 사용자가 최근에 본 카테고리를 가져온다.
 const getUserRecentCategory = async () => {

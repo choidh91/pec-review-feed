@@ -23,7 +23,7 @@ export const ReviewModeItem = ({ review, likeCount, liked }: ReviewModeItemProps
   };
 
   if (reviewMode === 'album') {
-    return <ReviewAlbumItem review={review} />;
+    return <ReviewAlbumItem review={review} liked={liked} likeCount={likeCount} onToggleLike={handleLike} />;
   }
 
   if (reviewMode === 'feed') {
