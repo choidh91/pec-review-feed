@@ -7,9 +7,8 @@ export const Layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <main className="w-screen h-screen">
-      {children}
-      <Footer />
-    </main>
+    <>
+      <main className="w-screen h-screen">{children}</main> <Footer />
+    </>
   );
 };
