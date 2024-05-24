@@ -1,6 +1,6 @@
 import { ToggleReviewMode } from '@/features/toggleReviewMode';
-import { ReviewItem } from '@/features/reviewItem';
 import { getReviews } from '@/entities/reviewList';
+import { ReviewList } from '@/features/reviewList';
 
 export async function ReviewsPage() {
   const reviews = await getReviews();
@@ -10,9 +10,7 @@ export async function ReviewsPage() {
       <div className="flex flex-col h-full">
         <ToggleReviewMode />
         <div className="flex-1 overflow-auto">
-          {reviews.map((review) => (
-            <ReviewItem key={review.id} review={review} />
-          ))}
+          <ReviewList reviews={reviews} />
         </div>
       </div>
     </div>

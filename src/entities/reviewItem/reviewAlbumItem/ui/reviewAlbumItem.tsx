@@ -8,7 +8,7 @@ interface ReviewAlbumItemProps {
   review: IReview;
   liked: boolean;
   likeCount: number;
-  onToggleLike: (value: boolean) => void;
+  onToggleLike?: (value: boolean) => void;
 }
 
 export const ReviewAlbumItem = ({ review, liked, likeCount, onToggleLike }: ReviewAlbumItemProps) => {
@@ -24,7 +24,7 @@ export const ReviewAlbumItem = ({ review, liked, likeCount, onToggleLike }: Revi
       <div className="flex flex-row items-center mt-2">
         <button
           onClick={() => {
-            onToggleLike(liked);
+            onToggleLike?.(liked);
           }}
         >
           {liked ? <SolidHeartIcon className="w-7 h-7" /> : <OutlineHeartIcon className="w-7 h-7" />}
