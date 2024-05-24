@@ -8,7 +8,7 @@ interface ReviewFeedItemProps {
   review: IReview;
   liked: boolean;
   likeCount: number;
-  onToggleLike?: (value: boolean) => void;
+  onToggleLike: (value: boolean) => void;
 }
 
 export const ReviewFeedItem = ({ review, liked, likeCount, onToggleLike }: ReviewFeedItemProps) => {
@@ -33,7 +33,7 @@ export const ReviewFeedItem = ({ review, liked, likeCount, onToggleLike }: Revie
         <div className="flex flex-row items-center mt-2">
           <button
             onClick={() => {
-              onToggleLike?.(liked);
+              onToggleLike(liked);
             }}
           >
             {liked ? <SolidHeartIcon className="w-7 h-7" /> : <OutlineHeartIcon className="w-7 h-7" />}
