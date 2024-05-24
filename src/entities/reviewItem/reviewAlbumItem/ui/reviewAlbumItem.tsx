@@ -10,14 +10,15 @@ interface ReviewAlbumItemProps {
   liked: boolean;
   likeCount: number;
   onToggleLike: (value: boolean) => void;
+  onShowDetail: () => void;
 }
 
-export const ReviewAlbumItem = ({ review, liked, likeCount, onToggleLike }: ReviewAlbumItemProps) => {
+export const ReviewAlbumItem = ({ review, liked, likeCount, onToggleLike, onShowDetail }: ReviewAlbumItemProps) => {
   return (
     <div className="flex flex-col border-2">
       <h3 className="font-bold text-lg">{review.author.name}</h3>
       {review.photo && (
-        <div className="size-36 flex items-center">
+        <div className="size-36 flex items-center" onClick={onShowDetail}>
           <Image src={review.photo} alt="image" width={150} height={150} priority />
         </div>
       )}

@@ -9,9 +9,10 @@ interface ReviewFeedItemProps {
   liked: boolean;
   likeCount: number;
   onToggleLike: (value: boolean) => void;
+  onShowDetail: () => void;
 }
 
-export const ReviewFeedItem = ({ review, liked, likeCount, onToggleLike }: ReviewFeedItemProps) => {
+export const ReviewFeedItem = ({ review, liked, likeCount, onToggleLike, onShowDetail }: ReviewFeedItemProps) => {
   return (
     <div className="p-2">
       <div className="flex-1 border-2 rounded-md p-2">
@@ -26,7 +27,7 @@ export const ReviewFeedItem = ({ review, liked, likeCount, onToggleLike }: Revie
         <p className="text-base text-gray-700 dark:text-gray-300 mt-2">{review.content}</p>
 
         {review.photo && (
-          <div className="size-36 flex items-center">
+          <div className="size-36 flex items-center" onClick={onShowDetail}>
             <Image src={review.photo} alt="image" width={150} height={150} priority />
           </div>
         )}

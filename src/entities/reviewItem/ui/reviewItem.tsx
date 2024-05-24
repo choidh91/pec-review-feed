@@ -5,6 +5,7 @@ import { IReview, getCachedLikeStatus } from '@/shared/api/review';
 import { ReviewAlbumItem, ReviewFeedItem } from '@/entities/reviewItem';
 import { likeReview, dislikeReview } from '@/features/likeReview';
 import { useState, useEffect } from 'react';
+import { BottomSheetDialog } from '@/shared/ui/bottomSheetDialog';
 
 interface ReviewItemProps {
   review: IReview;
@@ -14,6 +15,7 @@ interface ReviewItemProps {
 export const ReviewItem = ({ review, reviewMode }: ReviewItemProps) => {
   const [liked, setLiked] = useState<boolean>(false);
   const [likeCount, setLikeCount] = useState<number>(0);
+  const [showDetail, setShowDetail] = useState<boolean>(false);
 
   const getLikeStatus = () => {
     getCachedLikeStatus(review.id).then((data) => {
@@ -38,10 +40,25 @@ export const ReviewItem = ({ review, reviewMode }: ReviewItemProps) => {
   return (
     <>
       {reviewMode === 'album' && (
-        <ReviewAlbumItem review={review} liked={liked} likeCount={likeCount} onToggleLike={handleLike} />
+        <ReviewAlbumItem
+          review={review}
+          liked={liked}
+          likeCount={likeCount}
+          onToggleLike={handleLike}
+          onShowDetail={() => setShowDetail(true)}
+        />
       )}
       {reviewMode === 'feed' && (
-        <ReviewFeedItem review={review} liked={liked} likeCount={likeCount} onToggleLike={handleLike} />
+        <ReviewFeedItem
+          review={review}
+          liked={liked}
+          likeCount={likeCount}
+          onToggleLike={handleLike}
+          onShowDetail={() => setShowDetail(true)}
+        />
+      )}
+      {showDetail && (
+        <BottomSheetDialog title={'리뷰 상세'} content={review.content} onClose={() => setShowDetail(false)} />
       )}
     </>
   );
