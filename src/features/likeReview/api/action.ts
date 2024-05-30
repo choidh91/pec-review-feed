@@ -13,7 +13,9 @@ export const likeReview = async (reviewId: number) => {
     });
 
     revalidateTag(`like-review-${reviewId}`);
-  } catch (e) {}
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 export const dislikeReview = async (reviewId: number) => {
@@ -28,5 +30,7 @@ export const dislikeReview = async (reviewId: number) => {
     });
 
     revalidateTag(`like-review-${reviewId}`);
-  } catch (e) {}
+  } catch (e) {
+    console.error(e);
+  }
 };
